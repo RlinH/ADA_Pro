@@ -45,6 +45,8 @@ The source ZIP excludes the local overlay images and model checkpoints. After mo
 
 ## A100 handoff
 
+For a single ZIP64 transfer archive on this Windows machine, run `python -m scripts.package_a100`. It copies only the five complete archives needed for the three available tracks plus Git-tracked project files, verifies the data hashes while packing, and writes a SHA-256 sidecar. The default destination is `D:\DGSEG_A100_bundle_2026-10-25.zip`; use `--output` to choose another disk with at least 46 GiB free.
+
 1. Copy this project and the licensed dataset archives to storage accessible from the school A100. Preserve the `downloads/` tree under the new data root. Follow each dataset's license for storage and access; do not push raw data to Git.
 2. Create a Python 3.11 environment. Install a matching CUDA build of PyTorch and torchvision using the [official PyTorch selector](https://pytorch.org/get-started/locally/), then `python3 -m pip install -r requirements.txt`.
 3. Set `DGSEG_DATA_ROOT` to the directory containing `downloads/`. Check `python3 -c 'import torch; print(torch.cuda.is_available())'` prints `True`.
