@@ -1,0 +1,115 @@
+{
+  "status": "passed",
+  "model_runs": {
+    "r19_erm_smoke": {
+      "track": "r19",
+      "method": "erm",
+      "steps": 1,
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "manifest_sha256": {
+        "source_train": "7c8a046fbf6f72f490d5338e33c6156c2258729d3bb9ad7616bf4c7a121b2ef4",
+        "source_val": "fdd2e544651fb6b60a22785ce062055c802c0bcba9532389487e7c2637984815"
+      },
+      "protocol_sha256": "d6385646c22381b7d34d946ada7458c6831cc2a8598964f2eee682c64ac17c72"
+    },
+    "r19_mixstyle_smoke": {
+      "track": "r19",
+      "method": "mixstyle",
+      "steps": 1,
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "manifest_sha256": {
+        "source_train": "7c8a046fbf6f72f490d5338e33c6156c2258729d3bb9ad7616bf4c7a121b2ef4",
+        "source_val": "fdd2e544651fb6b60a22785ce062055c802c0bcba9532389487e7c2637984815"
+      },
+      "protocol_sha256": "d6385646c22381b7d34d946ada7458c6831cc2a8598964f2eee682c64ac17c72"
+    },
+    "r19_randconv_smoke": {
+      "track": "r19",
+      "method": "randconv",
+      "steps": 1,
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "manifest_sha256": {
+        "source_train": "7c8a046fbf6f72f490d5338e33c6156c2258729d3bb9ad7616bf4c7a121b2ef4",
+        "source_val": "fdd2e544651fb6b60a22785ce062055c802c0bcba9532389487e7c2637984815"
+      },
+      "protocol_sha256": "d6385646c22381b7d34d946ada7458c6831cc2a8598964f2eee682c64ac17c72"
+    },
+    "rs7_u2r_erm_smoke": {
+      "track": "rs7_u2r",
+      "method": "erm",
+      "steps": 1,
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "manifest_sha256": {
+        "source_train": "644428892ae30d46782776aa7285fe8b5da6ab02357e0488bf8c3a831898f354",
+        "source_val": "f955b66052669b8030fb9f742a88433e5acae471897578a8d0a3de75bc795568"
+      },
+      "protocol_sha256": "d6385646c22381b7d34d946ada7458c6831cc2a8598964f2eee682c64ac17c72"
+    },
+    "rs7_r2u_erm_smoke": {
+      "track": "rs7_r2u",
+      "method": "erm",
+      "steps": 1,
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "manifest_sha256": {
+        "source_train": "e98829cdbb6234ac307fa79482c3012383ba59483e1ea23c817f9f463dbbf8c4",
+        "source_val": "6fa0c1bb72f34e9afe86d524e41ac84ca8a88b9bdd2369a4aaf858be8250db50"
+      },
+      "protocol_sha256": "d6385646c22381b7d34d946ada7458c6831cc2a8598964f2eee682c64ac17c72"
+    },
+    "r19_erm_pretrained_smoke": {
+      "track": "r19",
+      "method": "erm",
+      "steps": 1,
+      "device": "cuda",
+      "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "manifest_sha256": {
+        "source_train": "7c8a046fbf6f72f490d5338e33c6156c2258729d3bb9ad7616bf4c7a121b2ef4",
+        "source_val": "fdd2e544651fb6b60a22785ce062055c802c0bcba9532389487e7c2637984815"
+      },
+      "protocol_sha256": "d6385646c22381b7d34d946ada7458c6831cc2a8598964f2eee682c64ac17c72",
+      "backbone_weights": "ResNet50_Weights.IMAGENET1K_V2"
+    }
+  },
+  "target_evaluations": {
+    "r19_erm_mapillary_native_smoke.json": {
+      "track": "r19",
+      "target": "mapillary_v1.2",
+      "num_images": 1,
+      "native_gt_resolution": true,
+      "smoke_only": true,
+      "publishable": false,
+      "mapping_version": "mapillary_v1.2-b790f910d004",
+      "manifest_hash": "f428db57fca06c768f889c43cfeca23428ee22163b7b20688f53904b9048f33f",
+      "protocol_sha256": "d6385646c22381b7d34d946ada7458c6831cc2a8598964f2eee682c64ac17c72"
+    },
+    "rs7_u2r_erm_smoke.json": {
+      "track": "rs7_u2r",
+      "target": "rural",
+      "num_images": 1,
+      "native_gt_resolution": false,
+      "smoke_only": true,
+      "publishable": false,
+      "mapping_version": "loveda-345ccdeb96bb",
+      "manifest_hash": "99cdf741c958de2f13a45edca2516a2066860be5ee4d71fad2c4ea50430e42de",
+      "protocol_sha256": "d6385646c22381b7d34d946ada7458c6831cc2a8598964f2eee682c64ac17c72"
+    },
+    "rs7_r2u_erm_smoke.json": {
+      "track": "rs7_r2u",
+      "target": "urban",
+      "num_images": 1,
+      "native_gt_resolution": false,
+      "smoke_only": true,
+      "publishable": false,
+      "mapping_version": "loveda-345ccdeb96bb",
+      "manifest_hash": "91f065b3185139aa98b866f139d4362098a5c75ac5b5a9c17c821503bbf93f91",
+      "protocol_sha256": "d6385646c22381b7d34d946ada7458c6831cc2a8598964f2eee682c64ac17c72"
+    }
+  },
+  "pretrained_backbone_sha256": "11ad3fa62ca79e40addfd354a8ec4b7c75143b3038b8d2a807fbc68deab379ca",
+  "note": "Engineering smoke only; no full-training benchmark scores."
+}

@@ -1,0 +1,17 @@
+{
+  "source_train": {
+    "count": 1229,
+    "path": "E:\\ADA2\\DGSEG_BENCHMARK\\reports\\manifests\\rs7_r2u_source_train.csv",
+    "sha256": "e98829cdbb6234ac307fa79482c3012383ba59483e1ea23c817f9f463dbbf8c4"
+  },
+  "source_val": {
+    "count": 137,
+    "path": "E:\\ADA2\\DGSEG_BENCHMARK\\reports\\manifests\\rs7_r2u_source_val.csv",
+    "sha256": "6fa0c1bb72f34e9afe86d524e41ac84ca8a88b9bdd2369a4aaf858be8250db50"
+  },
+  "target_urban": {
+    "count": 677,
+    "path": "E:\\ADA2\\DGSEG_BENCHMARK\\reports\\manifests\\rs7_r2u_target_urban.csv",
+    "sha256": "91f065b3185139aa98b866f139d4362098a5c75ac5b5a9c17c821503bbf93f91"
+  }
+}

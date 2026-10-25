@@ -1,0 +1,49 @@
+{
+  "protocol_version": "dgseg-ssdg-v1.0-2026-10-25",
+  "principle": "one labeled source domain; target labels offline evaluation only",
+  "tracks": {
+    "r19": {
+      "source_train": "Cityscapes train",
+      "source_val": "Cityscapes val",
+      "available_target_eval": ["Mapillary Vistas Research Edition v1.2 validation"],
+      "pending_target_eval": ["BDD100K semantic segmentation val", "ACDC val four conditions"],
+      "num_classes": 19
+    },
+    "rs7_u2r": {
+      "source_train": "LoveDA Train Urban deterministic 90%",
+      "source_val": "LoveDA Train Urban deterministic 10% holdout",
+      "target_eval": "LoveDA Val Rural",
+      "num_classes": 7
+    },
+    "rs7_r2u": {
+      "source_train": "LoveDA Train Rural deterministic 90%",
+      "source_val": "LoveDA Train Rural deterministic 10% holdout",
+      "target_eval": "LoveDA Val Urban",
+      "num_classes": 7
+    },
+    "s16": {
+      "status": "blocked: official SYNTHIA archive download incomplete",
+      "num_classes": 16
+    }
+  },
+  "methods_run_in_shared_backbone": ["erm", "mixstyle", "randconv"],
+  "backbone": "ImageNet-pretrained ResNet-50",
+  "decoder": "DeepLabV3+; output stride 16; ASPP rates 6,12,18",
+  "training": {
+    "seed_holdout": 42,
+    "seeds": [0, 1, 2],
+    "epochs": 80,
+    "batch_size": 4,
+    "crop_by_track": {"r19": [512, 1024], "rs7_u2r": [512, 512], "rs7_r2u": [512, 512]},
+    "optimizer": "SGD momentum 0.9, weight decay 0.0001",
+    "base_lr": 0.01,
+    "lr_schedule": "polynomial power 0.9",
+    "checkpoint_selection": "highest source_val mIoU only"
+  },
+  "evaluation": {
+    "input_size_by_track": {"r19": [512, 1024], "rs7_u2r": [512, 512], "rs7_r2u": [512, 512]},
+    "prediction_upsampling": "bilinear logits to native target mask resolution, then argmax",
+    "metrics": "global confusion matrix, absent from both GT and prediction excluded",
+    "target_labels_in_training": false
+  }
+}

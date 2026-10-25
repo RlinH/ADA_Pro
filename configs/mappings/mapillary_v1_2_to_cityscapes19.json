@@ -1,0 +1,535 @@
+{
+  "source_version": "Mapillary Vistas Research Edition v1.2",
+  "config_version_field": 1.1,
+  "mapping_version": "mapillary_v1.2-b790f910d004",
+  "rows": [
+    {
+      "raw_id": 0,
+      "official_name": "animal--bird",
+      "readable": "Bird",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "bird has no Cityscapes-19 class"
+    },
+    {
+      "raw_id": 1,
+      "official_name": "animal--ground-animal",
+      "readable": "Ground Animal",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "ground animal has no Cityscapes-19 class"
+    },
+    {
+      "raw_id": 2,
+      "official_name": "construction--barrier--curb",
+      "readable": "Curb",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "curb is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 3,
+      "official_name": "construction--barrier--fence",
+      "readable": "Fence",
+      "cityscapes19_id": 4,
+      "cityscapes19_name": "fence",
+      "reason": "fence"
+    },
+    {
+      "raw_id": 4,
+      "official_name": "construction--barrier--guard-rail",
+      "readable": "Guard Rail",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "guard rail is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 5,
+      "official_name": "construction--barrier--other-barrier",
+      "readable": "Barrier",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "other barrier is semantically mixed"
+    },
+    {
+      "raw_id": 6,
+      "official_name": "construction--barrier--wall",
+      "readable": "Wall",
+      "cityscapes19_id": 3,
+      "cityscapes19_name": "wall",
+      "reason": "wall"
+    },
+    {
+      "raw_id": 7,
+      "official_name": "construction--flat--bike-lane",
+      "readable": "Bike Lane",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "bike lane does not have an unambiguous Cityscapes-19 match"
+    },
+    {
+      "raw_id": 8,
+      "official_name": "construction--flat--crosswalk-plain",
+      "readable": "Crosswalk - Plain",
+      "cityscapes19_id": 0,
+      "cityscapes19_name": "road",
+      "reason": "plain crosswalk surface is part of the road"
+    },
+    {
+      "raw_id": 9,
+      "official_name": "construction--flat--curb-cut",
+      "readable": "Curb Cut",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "curb cut may be road or sidewalk"
+    },
+    {
+      "raw_id": 10,
+      "official_name": "construction--flat--parking",
+      "readable": "Parking",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "parking is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 11,
+      "official_name": "construction--flat--pedestrian-area",
+      "readable": "Pedestrian Area",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "pedestrian area is not necessarily sidewalk"
+    },
+    {
+      "raw_id": 12,
+      "official_name": "construction--flat--rail-track",
+      "readable": "Rail Track",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "rail track is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 13,
+      "official_name": "construction--flat--road",
+      "readable": "Road",
+      "cityscapes19_id": 0,
+      "cityscapes19_name": "road",
+      "reason": "road"
+    },
+    {
+      "raw_id": 14,
+      "official_name": "construction--flat--service-lane",
+      "readable": "Service Lane",
+      "cityscapes19_id": 0,
+      "cityscapes19_name": "road",
+      "reason": "service lane is a road surface"
+    },
+    {
+      "raw_id": 15,
+      "official_name": "construction--flat--sidewalk",
+      "readable": "Sidewalk",
+      "cityscapes19_id": 1,
+      "cityscapes19_name": "sidewalk",
+      "reason": "sidewalk"
+    },
+    {
+      "raw_id": 16,
+      "official_name": "construction--structure--bridge",
+      "readable": "Bridge",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "bridge is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 17,
+      "official_name": "construction--structure--building",
+      "readable": "Building",
+      "cityscapes19_id": 2,
+      "cityscapes19_name": "building",
+      "reason": "building"
+    },
+    {
+      "raw_id": 18,
+      "official_name": "construction--structure--tunnel",
+      "readable": "Tunnel",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "tunnel is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 19,
+      "official_name": "human--person",
+      "readable": "Person",
+      "cityscapes19_id": 11,
+      "cityscapes19_name": "person",
+      "reason": "person"
+    },
+    {
+      "raw_id": 20,
+      "official_name": "human--rider--bicyclist",
+      "readable": "Bicyclist",
+      "cityscapes19_id": 12,
+      "cityscapes19_name": "rider",
+      "reason": "bicyclist is a rider"
+    },
+    {
+      "raw_id": 21,
+      "official_name": "human--rider--motorcyclist",
+      "readable": "Motorcyclist",
+      "cityscapes19_id": 12,
+      "cityscapes19_name": "rider",
+      "reason": "motorcyclist is a rider"
+    },
+    {
+      "raw_id": 22,
+      "official_name": "human--rider--other-rider",
+      "readable": "Other Rider",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "other rider may not match the Cityscapes rider definition"
+    },
+    {
+      "raw_id": 23,
+      "official_name": "marking--crosswalk-zebra",
+      "readable": "Lane Marking - Crosswalk",
+      "cityscapes19_id": 0,
+      "cityscapes19_name": "road",
+      "reason": "crosswalk marking lies on road"
+    },
+    {
+      "raw_id": 24,
+      "official_name": "marking--general",
+      "readable": "Lane Marking - General",
+      "cityscapes19_id": 0,
+      "cityscapes19_name": "road",
+      "reason": "general lane marking lies on road"
+    },
+    {
+      "raw_id": 25,
+      "official_name": "nature--mountain",
+      "readable": "Mountain",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "mountain extent may mix vegetation and terrain"
+    },
+    {
+      "raw_id": 26,
+      "official_name": "nature--sand",
+      "readable": "Sand",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "sand may be terrain or road shoulder"
+    },
+    {
+      "raw_id": 27,
+      "official_name": "nature--sky",
+      "readable": "Sky",
+      "cityscapes19_id": 10,
+      "cityscapes19_name": "sky",
+      "reason": "sky"
+    },
+    {
+      "raw_id": 28,
+      "official_name": "nature--snow",
+      "readable": "Snow",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "snow may cover several underlying classes"
+    },
+    {
+      "raw_id": 29,
+      "official_name": "nature--terrain",
+      "readable": "Terrain",
+      "cityscapes19_id": 9,
+      "cityscapes19_name": "terrain",
+      "reason": "terrain"
+    },
+    {
+      "raw_id": 30,
+      "official_name": "nature--vegetation",
+      "readable": "Vegetation",
+      "cityscapes19_id": 8,
+      "cityscapes19_name": "vegetation",
+      "reason": "vegetation"
+    },
+    {
+      "raw_id": 31,
+      "official_name": "nature--water",
+      "readable": "Water",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "water has no Cityscapes-19 class"
+    },
+    {
+      "raw_id": 32,
+      "official_name": "object--banner",
+      "readable": "Banner",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "banner is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 33,
+      "official_name": "object--bench",
+      "readable": "Bench",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "bench is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 34,
+      "official_name": "object--bike-rack",
+      "readable": "Bike Rack",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "bike rack is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 35,
+      "official_name": "object--billboard",
+      "readable": "Billboard",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "billboard is not a traffic sign"
+    },
+    {
+      "raw_id": 36,
+      "official_name": "object--catch-basin",
+      "readable": "Catch Basin",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "catch basin is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 37,
+      "official_name": "object--cctv-camera",
+      "readable": "CCTV Camera",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "CCTV camera is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 38,
+      "official_name": "object--fire-hydrant",
+      "readable": "Fire Hydrant",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "fire hydrant is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 39,
+      "official_name": "object--junction-box",
+      "readable": "Junction Box",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "junction box is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 40,
+      "official_name": "object--mailbox",
+      "readable": "Mailbox",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "mailbox is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 41,
+      "official_name": "object--manhole",
+      "readable": "Manhole",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "manhole is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 42,
+      "official_name": "object--phone-booth",
+      "readable": "Phone Booth",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "phone booth is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 43,
+      "official_name": "object--pothole",
+      "readable": "Pothole",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "pothole is not a separate Cityscapes-19 class"
+    },
+    {
+      "raw_id": 44,
+      "official_name": "object--street-light",
+      "readable": "Street Light",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "street light includes lamp and support"
+    },
+    {
+      "raw_id": 45,
+      "official_name": "object--support--pole",
+      "readable": "Pole",
+      "cityscapes19_id": 5,
+      "cityscapes19_name": "pole",
+      "reason": "pole"
+    },
+    {
+      "raw_id": 46,
+      "official_name": "object--support--traffic-sign-frame",
+      "readable": "Traffic Sign Frame",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "traffic-sign frame may include sign and support"
+    },
+    {
+      "raw_id": 47,
+      "official_name": "object--support--utility-pole",
+      "readable": "Utility Pole",
+      "cityscapes19_id": 5,
+      "cityscapes19_name": "pole",
+      "reason": "utility pole"
+    },
+    {
+      "raw_id": 48,
+      "official_name": "object--traffic-light",
+      "readable": "Traffic Light",
+      "cityscapes19_id": 6,
+      "cityscapes19_name": "traffic light",
+      "reason": "traffic light"
+    },
+    {
+      "raw_id": 49,
+      "official_name": "object--traffic-sign--back",
+      "readable": "Traffic Sign (Back)",
+      "cityscapes19_id": 7,
+      "cityscapes19_name": "traffic sign",
+      "reason": "back of a traffic sign"
+    },
+    {
+      "raw_id": 50,
+      "official_name": "object--traffic-sign--front",
+      "readable": "Traffic Sign (Front)",
+      "cityscapes19_id": 7,
+      "cityscapes19_name": "traffic sign",
+      "reason": "front of a traffic sign"
+    },
+    {
+      "raw_id": 51,
+      "official_name": "object--trash-can",
+      "readable": "Trash Can",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "trash can is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 52,
+      "official_name": "object--vehicle--bicycle",
+      "readable": "Bicycle",
+      "cityscapes19_id": 18,
+      "cityscapes19_name": "bicycle",
+      "reason": "bicycle"
+    },
+    {
+      "raw_id": 53,
+      "official_name": "object--vehicle--boat",
+      "readable": "Boat",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "boat has no Cityscapes-19 class"
+    },
+    {
+      "raw_id": 54,
+      "official_name": "object--vehicle--bus",
+      "readable": "Bus",
+      "cityscapes19_id": 15,
+      "cityscapes19_name": "bus",
+      "reason": "bus"
+    },
+    {
+      "raw_id": 55,
+      "official_name": "object--vehicle--car",
+      "readable": "Car",
+      "cityscapes19_id": 13,
+      "cityscapes19_name": "car",
+      "reason": "car"
+    },
+    {
+      "raw_id": 56,
+      "official_name": "object--vehicle--caravan",
+      "readable": "Caravan",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "caravan is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 57,
+      "official_name": "object--vehicle--motorcycle",
+      "readable": "Motorcycle",
+      "cityscapes19_id": 17,
+      "cityscapes19_name": "motorcycle",
+      "reason": "motorcycle"
+    },
+    {
+      "raw_id": 58,
+      "official_name": "object--vehicle--on-rails",
+      "readable": "On Rails",
+      "cityscapes19_id": 16,
+      "cityscapes19_name": "train",
+      "reason": "rail vehicle corresponds to train"
+    },
+    {
+      "raw_id": 59,
+      "official_name": "object--vehicle--other-vehicle",
+      "readable": "Other Vehicle",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "other vehicle is semantically mixed"
+    },
+    {
+      "raw_id": 60,
+      "official_name": "object--vehicle--trailer",
+      "readable": "Trailer",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "trailer is ignored in Cityscapes-19"
+    },
+    {
+      "raw_id": 61,
+      "official_name": "object--vehicle--truck",
+      "readable": "Truck",
+      "cityscapes19_id": 14,
+      "cityscapes19_name": "truck",
+      "reason": "truck"
+    },
+    {
+      "raw_id": 62,
+      "official_name": "object--vehicle--wheeled-slow",
+      "readable": "Wheeled Slow",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "wheeled slow has no unambiguous class"
+    },
+    {
+      "raw_id": 63,
+      "official_name": "void--car-mount",
+      "readable": "Car Mount",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "car mount is void"
+    },
+    {
+      "raw_id": 64,
+      "official_name": "void--ego-vehicle",
+      "readable": "Ego Vehicle",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "ego vehicle is void"
+    },
+    {
+      "raw_id": 65,
+      "official_name": "void--unlabeled",
+      "readable": "Unlabeled",
+      "cityscapes19_id": null,
+      "cityscapes19_name": null,
+      "reason": "unlabeled is void"
+    }
+  ]
+}

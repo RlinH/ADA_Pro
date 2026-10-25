@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+torch_cache/
+runs/
+reports/evaluations/
+reports/audit_overlays/
+data/
+*.pt
+*.pth
+*.zip
+*.rar

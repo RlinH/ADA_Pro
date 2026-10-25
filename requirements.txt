@@ -1,0 +1,3 @@
+numpy==1.26.4
+Pillow>=9.2,<13
+# Install matching torch/torchvision CUDA wheels from https://pytorch.org/get-started/locally/
