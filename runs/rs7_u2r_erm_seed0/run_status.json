@@ -1,0 +1,30 @@
+{
+  "track": "rs7_u2r",
+  "method": "erm",
+  "seed": 0,
+  "epoch": 80,
+  "steps": 20800,
+  "num_classes": 7,
+  "source_only": true,
+  "planned_epochs": 80,
+  "batch_size": 4,
+  "base_lr": 0.01,
+  "pretrained_backbone": true,
+  "backbone_weights": "ResNet50_Weights.IMAGENET1K_V2",
+  "image_size": [
+    512,
+    512
+  ],
+  "manifest_sha256": {
+    "source_train": "644428892ae30d46782776aa7285fe8b5da6ab02357e0488bf8c3a831898f354",
+    "source_val": "f955b66052669b8030fb9f742a88433e5acae471897578a8d0a3de75bc795568"
+  },
+  "protocol_sha256": "d6385646c22381b7d34d946ada7458c6831cc2a8598964f2eee682c64ac17c72",
+  "smoke_only": false,
+  "source_val_miou": 0.6429116170352274,
+  "best_source_val_miou": 0.6466535898275764,
+  "training_loss": 0.23346049023362306,
+  "torch_version": "2.1.0+cu118",
+  "device": "cuda",
+  "gpu": "NVIDIA A100 80GB PCIe"
+}

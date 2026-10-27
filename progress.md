@@ -5,6 +5,24 @@ Newest entries are added at the top.
 
 ---
 
+## 2026-10-27 — Add ERM LoveDA run-status / evaluation JSONs to the repo
+
+### Changes
+- Uploaded the small JSON artifacts for the two ERM LoveDA runs (no weights, no raw data):
+  - `runs/rs7_u2r_erm_seed0/run_status.json`
+  - `runs/rs7_r2u_erm_seed0/run_status.json`
+  - `reports/evaluations/rs7_u2r_erm_seed0_rural.json`
+  - `reports/evaluations/rs7_r2u_erm_seed0_urban.json`
+- Force-added them because `runs/` and `reports/evaluations/` are gitignored; only these specific files are tracked.
+
+### Result snapshots (ERM, seed 0)
+| Track | Target | source_val mIoU (best) | Target mIoU | Target pixel acc |
+|---|---|---:|---:|---:|
+| rs7_u2r | rural | 0.6467 | 0.3422 | 0.6055 |
+| rs7_r2u | urban | 0.6534 | 0.4812 | 0.6371 |
+
+---
+
 ## 2026-10-27 — A100 single-seed (seed 0) benchmark run
 
 ### Changes
