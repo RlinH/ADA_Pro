@@ -1,5 +1,9 @@
 # DGSeg SSDG benchmark
 
+## Official RobustNet reproduction (A100)
+
+The new [A100 handoff](chatgpt.md) runs the pinned official RobustNet R50 baseline and ISW on Cityscapes, then scores their source-selected checkpoints on the frozen Mapillary v1.2 manifest. Use `MODE=smoke` before `MODE=full` with [run_robustnet_a100.sh](scripts/run_robustnet_a100.sh). These are separate from the frozen v1.0 ERM/MixStyle/RandConv results; no full RobustNet result exists yet. The local RTX 3060 completed a one-step source training smoke and one-image target inference smoke for both untrained official variants.
+
 This project implements **single-source domain generalization for semantic segmentation** on data already obtained by the user. It reads original ZIP archives directly and keeps raw datasets outside the code directory. The shared architecture is ResNet-50 + DeepLabV3+ (output stride 16). A training run sees one labeled source domain. Only `scripts/evaluate.py` reads target masks. The source validation set alone selects `best_source_val.pt`.
 
 ## Current executable scope

@@ -5,6 +5,25 @@ Newest entries are added at the top.
 
 ---
 
+## 2026-10-27 — Prepare official RobustNet A100 reproduction
+
+### Changes
+
+- Pinned official RobustNet at `1ff5c047d7abaf9ab1a7cca23aff812b2f09de15` and added Cityscapes-only staging, an A100 baseline/ISW training runner, and a strict common Mapillary evaluator.
+- Added `chatgpt.md` with executable A100 agent handoff, validation criteria, and a separate Rein foundation-model phase. Updated README.
+- Ran local one-step Cityscapes training and one-image Mapillary inference smoke on an RTX 3060 for both **untrained** official architectures. No full training or scored reproduction was performed on this computer.
+- Tested the staging script against the original local ZIPs: extracted 3,475 train/val images and 13,900 annotation files, verified exactly 2,975 Cityscapes training image/label pairs. The extracted copy stays outside Git.
+- Verified Python compilation, Bash syntax, and all four existing unit tests.
+
+### Results — local plumbing smoke only
+
+| Official architecture | Source training step (96×128) | Target inference (128×256) | Publishable mIoU |
+|---|---|---|---|
+| RobustNet R50 baseline | passed; loss 4.7790 | passed, 1 image | none |
+| RobustNet R50 + ISW | passed; loss 4.7476 | passed, 1 image | none |
+
+---
+
 ## 2026-10-27 — Verify top-conference comparison scales
 
 ### Changes
