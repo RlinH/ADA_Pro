@@ -5,6 +5,34 @@ Newest entries are added at the top.
 
 ---
 
+## 2026-10-27 — A100 full RobustNet reproduction (baseline vs ISW)
+
+### Changes
+- Ran official RobustNet **full** training (40,000 iters, 768 crop, class-uniform sampling, `--val_dataset` empty) for `baseline` and `isw` on one A100, then evaluated both on the frozen r19 common Mapillary v1.2 evaluator (`num_images=2000`, native GT).
+- Applied two minimal compatibility patches to the **external** checkout only (method math / data protocol unchanged):
+  - `RobustNet/transforms/transforms.py`: `multichannel=True` → `channel_axis=-1` (scikit-image ≥ 0.19).
+  - `RobustNet/train.py`: `vutils.make_grid(..., range=(0,1))` → `value_range=(0,1)` (newer torchvision).
+- Environment fix: pinned `numpy==1.26.4` and `scikit-image==0.22.0` (an earlier `pip install` had pulled numpy 2.4.6, incompatible with torch 2.1).
+- Added `reports/ROBUSTNET_RUN_2026-10-27.md`. Pinned checkout + extracted Cityscapes stay outside Git (`DGSEG_REPRO/`).
+
+### Results — r19 Cityscapes → Mapillary Vistas v1.2 (2000 images, common evaluator)
+| Method | source-val mIoU | target mIoU | mean Dice | pixel acc | checkpoint SHA-256 |
+|---|---:|---:|---:|---:|---|
+| RobustNet baseline | 0.76313 | 0.4668 | 0.5996 | 0.8710 | `0dde76b9…6038212` |
+| RobustNet ISW | 0.75314 | **0.5193** | 0.6580 | 0.8992 | `5eb12cf5…78621bda` |
+
+### Comparison on the same evaluator
+| Method | mIoU |
+|---|---:|
+| ERM (v1.0, seed 0) | 0.5369 |
+| RandConv (v1.0, seed 0) | 0.5727 |
+| RobustNet baseline | 0.4668 |
+| RobustNet ISW | 0.5193 |
+
+ISW − baseline = **+5.25** mIoU points (paper: +6.96 under its own protocol). Absolute values are not directly comparable to the paper's 51.68/58.64 (different label map / input preprocessing). Effective batch = 4 on one A100 (paper used two GPUs).
+
+---
+
 ## 2026-10-27 — Prepare official RobustNet A100 reproduction
 
 ### Changes
