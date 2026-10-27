@@ -43,10 +43,18 @@ def main() -> None:
     parser.add_argument("--width", type=int, default=1024)
     parser.add_argument("--smoke", action="store_true", help="One downsampled real-data sample; metric is never publishable")
     parser.add_argument("--native-smoke", action="store_true", help="One real sample with prediction restored to native GT resolution; never publishable")
+    parser.add_argument("--diagnostic", action="store_true", help="Offline input-scale audit with a completed checkpoint; never publishable")
+    parser.add_argument("--max-samples", type=int, default=None, help="Evenly spaced target sample count for --diagnostic")
     args = parser.parse_args()
     if args.smoke and args.native_smoke:
         parser.error("Choose only one smoke mode")
     smoke = args.smoke or args.native_smoke
+    if args.diagnostic and smoke:
+        parser.error("Diagnostic and smoke modes cannot be combined")
+    if args.max_samples is not None and (not args.diagnostic or args.max_samples < 1):
+        parser.error("--max-samples requires --diagnostic and a positive count")
+    if args.height < 1 or args.width < 1:
+        parser.error("--height and --width must be positive")
     if smoke:
         args.height, args.width = 128, 256 if args.track == "r19" else 128
     root = args.data_root.resolve()
@@ -78,7 +86,20 @@ def main() -> None:
         if not last_path.is_file():
             parser.error("Formal evaluation requires the completed run's last.pt beside best_source_val.pt")
         last_metadata = torch.load(last_path, map_location="cpu", weights_only=False)["metadata"]
-        if args.checkpoint.name != "best_source_val.pt" or not metadata["source_only"] or not metadata["pretrained_backbone"] or not (1 <= metadata["epoch"] <= frozen["epochs"]) or last_metadata["epoch"] != frozen["epochs"] or metadata["planned_epochs"] != frozen["epochs"] or metadata["batch_size"] != frozen["batch_size"] or metadata["image_size"] != frozen["crop_by_track"][args.track] or [args.height, args.width] != protocol["evaluation"]["input_size_by_track"][args.track] or metadata["seed"] not in frozen["seeds"] or any(last_metadata[key] != metadata[key] for key in ("track", "method", "seed", "manifest_sha256", "protocol_sha256")):
+        valid_checkpoint = (
+            args.checkpoint.name == "best_source_val.pt"
+            and metadata["source_only"]
+            and metadata["pretrained_backbone"]
+            and 1 <= metadata["epoch"] <= frozen["epochs"]
+            and last_metadata["epoch"] == frozen["epochs"]
+            and metadata["planned_epochs"] == frozen["epochs"]
+            and metadata["batch_size"] == frozen["batch_size"]
+            and metadata["image_size"] == frozen["crop_by_track"][args.track]
+            and metadata["seed"] in frozen["seeds"]
+            and all(last_metadata[key] == metadata[key] for key in ("track", "method", "seed", "manifest_sha256", "protocol_sha256"))
+        )
+        valid_input = args.diagnostic or [args.height, args.width] == protocol["evaluation"]["input_size_by_track"][args.track]
+        if not valid_checkpoint or not valid_input:
             parser.error("Formal evaluation requires the complete, source-selected frozen-protocol checkpoint and input size")
     num_classes = 19 if args.track == "r19" else 7
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -86,6 +107,9 @@ def main() -> None:
     model.load_state_dict(checkpoint["state_dict"], strict=True)
     model.to(device).eval()
     samples = groups[target_key][:1] if smoke else groups[target_key]
+    if args.max_samples is not None and args.max_samples < len(samples):
+        indices = np.linspace(0, len(samples) - 1, args.max_samples, dtype=int)
+        samples = [samples[int(index)] for index in indices]
     metric = Confusion(num_classes)
     with torch.no_grad():
         if args.smoke:
@@ -123,19 +147,22 @@ def main() -> None:
         "protocol_sha256": protocol_sha256,
         "native_gt_resolution": not args.smoke,
         "smoke_only": smoke,
-        "publishable": not smoke and not metadata["smoke_only"],
+        "diagnostic_only": args.diagnostic,
+        "evaluation_input_size": [args.height, args.width],
+        "evaluated_sample_ids_sha256": hashlib.sha256("\n".join(sample["sample_id"] for sample in samples).encode("utf-8")).hexdigest(),
+        "publishable": not smoke and not args.diagnostic and not metadata["smoke_only"],
         "metrics": summary,
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2), encoding="utf-8")
-    if not smoke:
+    if not smoke and not args.diagnostic:
         csv_path = args.output.with_suffix(".csv")
         fields = ["track", "source", "target", "condition", "method", "num_classes", "num_images", "mIoU", "mean_dice", "pixel_acc", "seed", "mapping_version", "manifest_hash", "protocol_sha256", "native_gt_resolution", "smoke_only", "publishable"]
         with csv_path.open("w", newline="", encoding="utf-8") as output:
             writer = csv.DictWriter(output, fieldnames=fields)
             writer.writeheader()
             writer.writerow({key: result[key] for key in fields})
-    print(json.dumps({"target": args.target, "num_images": len(samples), "smoke_only": smoke, "native_gt_resolution": result["native_gt_resolution"], "publishable": result["publishable"]}), flush=True)
+    print(json.dumps({"target": args.target, "num_images": len(samples), "smoke_only": smoke, "diagnostic_only": args.diagnostic, "native_gt_resolution": result["native_gt_resolution"], "publishable": result["publishable"]}), flush=True)
 
 
 if __name__ == "__main__":

@@ -5,6 +5,25 @@ Newest entries are added at the top.
 
 ---
 
+## 2026-10-27 — Audit low baseline scores and add scale diagnostic
+
+### Changes
+- Reviewed GitHub's seed-0 summary and the newly uploaded LoveDA ERM run-status/evaluation JSONs against training, label mapping, and global-confusion metric code.
+- Added `reports/BASELINE_AUDIT_2026-10-27.md` with literature-scale references, source/target gaps, and the Urban → Rural class confusion pattern.
+- Added a non-publishable `--diagnostic` evaluator mode for paired 512/1024 target-input checks with a completed checkpoint and identical deterministic sample IDs. Updated README instructions; kept the v1.0 training/evaluation protocol and existing benchmark scores unchanged.
+- Verified Python compilation, four unit tests, and a local native-resolution smoke evaluation.
+
+### Results — ERM seed 0, mIoU (%)
+
+| Track | Best source validation | Target | Gap (target − source) | Target weakest class IoU |
+|---|---:|---:|---:|---:|
+| LoveDA Urban → Rural | 64.67 | 34.22 | −30.44 | barren 6.54 |
+| LoveDA Rural → Urban | 65.34 | 48.12 | −17.22 | barren 34.50 |
+
+Source validation uses resized 512×512 masks; target evaluation uses native 1024×1024 masks, so the gap includes an evaluation-scale difference. The paired diagnostic has not yet been run on A100 and contributes no benchmark result.
+
+---
+
 ## 2026-10-27 — Add ERM LoveDA run-status / evaluation JSONs to the repo
 
 ### Changes

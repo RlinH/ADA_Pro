@@ -64,9 +64,24 @@ Formal evaluation checks the frozen protocol hash, completed 80-epoch `last.pt`,
 
 Metric JSON/CSV stores IoU, Dice, and accuracy as fractions in `[0, 1]`; multiply by 100 only when presenting percentages. The global confusion matrix is accumulated across the dataset before mIoU is computed.
 
+## Seed-0 result audit and input-scale diagnostic
+
+The A100 host has completed all nine seed-0 runs. See [the run report](reports/A100_RUN_seed0_2026-10-27.md), [the baseline audit](reports/BASELINE_AUDIT_2026-10-27.md), and [the summary](reports/benchmark_summary.csv). All three seeds are still required for a completed comparison. The two ERM LoveDA run-status and per-class target JSONs are now in the repository; full checkpoint histories remain on A100.
+
+The evaluator supports a post-hoc, **non-publishable** input-scale check. Use the same completed ERM checkpoint and the same deterministic 100 target samples at both sizes. Each JSON records the input size and selected sample-ID hash; verify that the hashes match in a pair. Run from the repository root on the A100 with `DGSEG_DATA_ROOT` set:
+
+```bash
+python3 -m scripts.evaluate --track rs7_u2r --target rural --checkpoint runs/rs7_u2r_erm_seed0/best_source_val.pt --height 512 --width 512 --diagnostic --max-samples 100 --output reports/diagnostics/u2r_erm_512_100.json
+python3 -m scripts.evaluate --track rs7_u2r --target rural --checkpoint runs/rs7_u2r_erm_seed0/best_source_val.pt --height 1024 --width 1024 --diagnostic --max-samples 100 --output reports/diagnostics/u2r_erm_1024_100.json
+python3 -m scripts.evaluate --track rs7_r2u --target urban --checkpoint runs/rs7_r2u_erm_seed0/best_source_val.pt --height 512 --width 512 --diagnostic --max-samples 100 --output reports/diagnostics/r2u_erm_512_100.json
+python3 -m scripts.evaluate --track rs7_r2u --target urban --checkpoint runs/rs7_r2u_erm_seed0/best_source_val.pt --height 1024 --width 1024 --diagnostic --max-samples 100 --output reports/diagnostics/r2u_erm_1024_100.json
+```
+
+These runs write JSON with `diagnostic_only=true` and `publishable=false`; they do not write a benchmark CSV. Keep the v1.0 summary unchanged. A change to the formal input size would need a new frozen protocol and new evaluation, and target scores must not be used to select checkpoints.
+
 ## Audit boundaries and next work
 
-- The output [summary](reports/benchmark_summary.csv) currently contains blank numerical cells. This is intentional: no full model has been trained.
+- The output [summary](reports/benchmark_summary.csv) contains nine seed-0 rows; seeds 1 and 2 remain outstanding.
 - `r19` currently has only one available target. The task document's BDD100K and ACDC three-target aggregate must stay blank until those official data are obtained and adapters are audited.
 - `s16` stays blocked until the official SYNTHIA file finishes and its raw label IDs and 16-class protocol are audited. Its preallocated partial RAR is not usable data.
-- Full A100 training and native-resolution 2,000-image Mapillary evaluation have not run on this computer. A 6 GiB RTX 3060 is used for the short engineering smoke only.
+- Full training and native-resolution 2,000-image Mapillary evaluation ran on the A100 host. A 6 GiB RTX 3060 on this computer is used for short engineering smoke only.

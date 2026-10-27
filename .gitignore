@@ -4,6 +4,7 @@ __pycache__/
 torch_cache/
 runs/
 reports/evaluations/
+reports/diagnostics/
 reports/audit_overlays/
 data/
 *.pt
