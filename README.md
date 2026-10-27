@@ -68,6 +68,8 @@ Metric JSON/CSV stores IoU, Dice, and accuracy as fractions in `[0, 1]`; multipl
 
 The A100 host has completed all nine seed-0 runs. See [the run report](reports/A100_RUN_seed0_2026-10-27.md), [the baseline audit](reports/BASELINE_AUDIT_2026-10-27.md), and [the summary](reports/benchmark_summary.csv). All three seeds are still required for a completed comparison. The two ERM LoveDA run-status and per-class target JSONs are now in the repository; full checkpoint histories remain on A100.
 
+The [top-conference literature comparison](reports/LITERATURE_COMPARISON_2026-10-27.md) separates paper scores by source domain, backbone, target split, and access to extra images. It identifies official-code RobustNet/ISW and LoveDA DeepLabV2 source-only reproductions as the next paper-matched anchors. Literature values are not merged into the measured summary.
+
 The evaluator supports a post-hoc, **non-publishable** input-scale check. Use the same completed ERM checkpoint and the same deterministic 100 target samples at both sizes. Each JSON records the input size and selected sample-ID hash; verify that the hashes match in a pair. Run from the repository root on the A100 with `DGSEG_DATA_ROOT` set:
 
 ```bash

@@ -5,6 +5,27 @@ Newest entries are added at the top.
 
 ---
 
+## 2026-10-27 — Verify top-conference comparison scales
+
+### Changes
+- Added `reports/LITERATURE_COMPARISON_2026-10-27.md` with checked primary-paper tables, method descriptions, source/target split limitations, and an official-code reproduction order.
+- Linked the review from `README.md`. No training, evaluator, data, or frozen-protocol results changed.
+
+### Results — literature and current Mapillary mIoU (%)
+
+| Cityscapes-only labeled source | Backbone / method | Mapillary mIoU | Note |
+|---|---|---:|---|
+| This repository, seed 0 | R50 DeepLabV3+ ERM | 53.69 | Mapillary v1.2 common evaluator |
+| This repository, seed 0 | R50 DeepLabV3+ RandConv adaptation | 57.27 | Same local protocol |
+| RobustNet CVPR 2021 | R50 baseline / ISW | 51.68 / 58.64 | Published evaluator; map and inference may differ |
+| WildNet CVPR 2022 | R50 WildNet | 58.79 | Uses extra unlabeled ImageNet images |
+| SiamDoGe ECCV 2022 | R50 SiamDoGe | 59.00 | Source-only method; published evaluator |
+| Rein CVPR 2024 | DINOv2-Large + Rein | 72.3 | Different backbone/pretraining tier |
+
+LoveDA NeurIPS 2021 reports source-only **31.74** (Urban → Rural) and **31.27** (Rural → Urban) on its **Test** split with DeepLabV2-R50; our Val/DeepLabV3+ numbers are 34.22/48.12 and are not matched reproductions. BDD and ACDC remain unavailable for local evaluation.
+
+---
+
 ## 2026-10-27 — Audit low baseline scores and add scale diagnostic
 
 ### Changes
